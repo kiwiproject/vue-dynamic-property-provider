@@ -1,5 +1,5 @@
 {
-  "name": "vue-dynamic-property-provider",
+  "name": "@kiwiproject/vue-dynamic-property-provider",
   "version": "0.1.0",
   "private": false,
   "type": "module",
