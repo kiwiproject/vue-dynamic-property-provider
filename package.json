@@ -1,47 +1,55 @@
 {
   "name": "vue-dynamic-property-provider",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/vue-dynamic-property-provider.umd.js",
+  "module": "./dist/vue-dynamic-property-provider.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/vue-dynamic-property-provider.es.js",
+      "require": "./dist/vue-dynamic-property-provider.umd.js"
+    }
+  },
+  "types": "./dist/main.d.ts",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "test:unit": "vue-cli-service test:unit",
-    "lint": "vue-cli-service lint"
+    "dev": "vite",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview",
+    "lint": "eslint --ignore-path .gitignore --ext .js,.ts,.vue .",
+    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json|vue)\""
   },
   "dependencies": {
-    "@headlessui/vue": "1.7.22",
-    "core-js": "^3.8.3",
+    "@headlessui/vue": "^1.7.22",
     "vue": "^3.2.13"
   },
   "devDependencies": {
-    "@types/jest": "^27.0.1",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
-    "@vue/cli-plugin-babel": "~5.0.0",
-    "@vue/cli-plugin-eslint": "~5.0.0",
-    "@vue/cli-plugin-typescript": "~5.0.0",
-    "@vue/cli-plugin-unit-jest": "~5.0.0",
-    "@vue/cli-service": "~5.0.0",
+    "@vitejs/plugin-vue": "^5.0.5",
     "@vue/eslint-config-typescript": "^9.1.0",
-    "@vue/test-utils": "^2.0.0-0",
-    "@vue/vue3-jest": "^27.0.0-alpha.1",
     "autoprefixer": "^10.4.19",
-    "babel-jest": "^27.0.6",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-vue": "^8.0.3",
-    "jest": "^27.0.5",
     "postcss": "^8.4.38",
     "prettier": "^2.4.1",
+    "rollup-plugin-typescript2": "^0.36.0",
     "tailwindcss": "^3.4.4",
     "ts-jest": "^27.0.4",
-    "typescript": "~4.5.5"
+    "typescript": "~4.5.5",
+    "vite-plugin-dts": "^3.9.1",
+    "vite-plugin-eslint": "^1.8.1"
   },
   "eslintConfig": {
     "root": true,
     "env": {
-      "node": true
+      "node": true,
+      "vue/setup-compiler-macros": true
     },
     "extends": [
       "plugin:vue/vue3-essential",
@@ -70,8 +78,5 @@
     "last 2 versions",
     "not dead",
     "not ie 11"
-  ],
-  "jest": {
-    "preset": "@vue/cli-plugin-unit-jest/presets/typescript-and-babel"
-  }
+  ]
 }
