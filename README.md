@@ -3,7 +3,7 @@
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=kiwiproject_vue-dynamic-property-provider&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=kiwiproject_vue-dynamic-property-provider)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=kiwiproject_vue-dynamic-property-provider&metric=coverage)](https://sonarcloud.io/summary/new_code?id=kiwiproject_vue-dynamic-property-provider)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-![NPM Version](https://img.shields.io/npm/v/%40kiwiproject%2Fvue-dynamic-property-provider)
+[![NPM Version](https://img.shields.io/npm/v/%40kiwiproject%2Fvue-dynamic-property-provider)](https://www.npmjs.com/package/@kiwiproject/vue-dynamic-property-provider)
 
 ## Install
 ```shell
