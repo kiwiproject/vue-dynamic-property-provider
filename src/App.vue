@@ -1,17 +1,30 @@
 <template>
-  <div class="max-w-[475px] p-8">
-    <div class="flex flex-col gap-4">
-      <DynamicPropertyField
-        v-for="field of Object.keys(data)"
-        v-bind:key="field"
-        :field="fields.filter((f) => f.name === field)[0]"
-        :modelValue="data"
-        :class="
-          fields.filter((f) => f.name === field)[0].type === 'boolean'
-            ? 'flex flex-row gap-2'
-            : 'flex flex-col gap-2'
-        "
-      />
+  <div
+    class="bg-slate-50 max-w-[475px] sm:max-w-none xl:max-w-[1600px] w-full p-8"
+  >
+    <div class="max-w-[475px] p-8">
+      <div class="flex flex-col gap-4">
+        <DynamicPropertyField
+          v-for="field of fields"
+          v-bind:key="field.name"
+          :field="field"
+          :modelValue="data"
+          :class="
+            field.type === 'boolean'
+              ? 'flex flex-row gap-2'
+              : 'flex flex-col gap-2'
+          "
+        />
+      </div>
+    </div>
+    <div class="w-full">
+      <div class="rounded-md bg-white dark:bg-slate-800 shadow-md p-8">
+        <DynamicPropertyTable
+          :fields="fields"
+          :data="dataList"
+          class="table-auto text-left w-full border border-gray-200"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -19,8 +32,10 @@
 <script lang="ts" setup>
 import DynamicPropertyField from "@/components/DynamicPropertyField.vue";
 import { ref } from "vue";
+import { DynamicPropertyTable } from "@/components";
 
 const data = ref({
+  id: 1,
   studentId: 5,
   createdAt: new Date(),
   password: "foo",
@@ -32,6 +47,8 @@ const data = ref({
   courses: ["CS-101", "ENG-104"],
   maxGradeLevel: "HS",
 });
+
+const dataList = ref([data.value]);
 
 const fields = [
   {
