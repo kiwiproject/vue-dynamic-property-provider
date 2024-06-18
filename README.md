@@ -10,7 +10,7 @@
 npm install @kiwiproject/vue-dynamic-property-provider
 ```
 
-## Import and register component
+## Import and register component (Dynamic Property Field)
 ### Global
 ```js
 import { createApp } from 'vue';
@@ -37,5 +37,37 @@ app.component('DynamicPropertyField', DynamicPropertyField);
   const field = ref({
     name: "firstName"
   });
+</script>
+```
+
+## Import and register component (Dynamic Property Table)
+### Global
+```js
+import { createApp } from 'vue';
+import App from './App.vue';
+
+import DynamicPropertyTable from '@kiwiproject/vue-dynamic-property-provider';
+
+const app = createApp(App);
+app.component('DynamicPropertyTable', DynamicPropertyTable);
+```
+
+### Local
+```vue
+<template>
+  <DynamicPropertyTable :fields="fields" :data="data" />
+</template>
+
+<script setup>
+  import { ref } from 'vue';
+  import DynamicPropertyTable from '@kiwiproject/vue-dynamic-property-provider';
+
+  const data = ref([
+    { id: 1, firstName: "John"}
+  ])
+  
+  const fields = ref([{
+    name: "firstName"
+  }]);
 </script>
 ```
