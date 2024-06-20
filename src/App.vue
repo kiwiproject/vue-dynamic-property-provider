@@ -30,9 +30,8 @@
 </template>
 
 <script lang="ts" setup>
-import DynamicPropertyField from "@/components/DynamicPropertyField.vue";
 import { ref } from "vue";
-import { DynamicPropertyTable } from "@/components";
+import { DynamicPropertyTable, DynamicPropertyField } from "../lib";
 
 const data = ref({
   id: 1,
