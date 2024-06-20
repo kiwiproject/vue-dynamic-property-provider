@@ -1,57 +1,30 @@
 import { defineConfig } from "vite";
+import { resolve } from "path";
 import vue from "@vitejs/plugin-vue";
 import dts from "vite-plugin-dts";
-import typescript2 from "rollup-plugin-typescript2";
-import * as path from "node:path";
-import eslint from "vite-plugin-eslint";
+
+// import typescript2 from "rollup-plugin-typescript2";
+// import * as path from "node:path";
+// import eslint from "vite-plugin-eslint";
 
 export default defineConfig({
-  plugins: [
-    vue(),
-    eslint(),
-    dts({
-      insertTypesEntry: true,
-    }),
-    typescript2({
-      check: false,
-      include: ["src/components/**/*.vue"],
-      tsconfigOverride: {
-        compilerOptions: {
-          outDir: "dist",
-          sourceMap: true,
-          declaration: true,
-          declarationMap: true,
-        },
-      },
-      exclude: ["vite.config.ts"],
-    }),
-  ],
+  plugins: [vue(), dts({ tsconfigPath: "tsconfig-build.json" })],
   build: {
+    copyPublicDir: false,
     lib: {
-      entry: "src/components/index.ts",
-      name: "DynamicPropertyField",
-      formats: ["es", "cjs", "umd"],
-      fileName: (format) => `dynamic-property-provider.${format}.js`,
+      entry: resolve(__dirname, "lib/index.ts"),
+      formats: ["es", "cjs"],
+      fileName: (format) => `vue-dynamic-property-provider.${format}.js`,
     },
     rollupOptions: {
-      // make sure to externalize deps that shouldn't be bundled
-      // into your library
-      input: {
-        main: path.resolve(__dirname, "src/components/main.ts"),
-      },
+      // make sure to externalize deps that shouldn't be bundled into your library
       external: ["vue", "@headlessui/vue"],
-      output: {
-        exports: "named",
-        globals: {
-          vue: "Vue",
-        },
-      },
     },
   },
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "src"),
-    },
-    extensions: [".vue", ".js", ".mjs", ".ts"],
-  },
+  // resolve: {
+  //   alias: {
+  //     "@": path.resolve(__dirname, "src"),
+  //   },
+  //   extensions: [".vue", ".js", ".mjs", ".ts"],
+  // },
 });
