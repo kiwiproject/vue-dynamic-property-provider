@@ -34,7 +34,11 @@
         :class="fieldStyle"
       />
     </template>
-    <template v-else-if="field.values && field.type !== 'list'">
+    <template
+      v-else-if="
+        field.values && field.values.length > 0 && field.type !== 'list'
+      "
+    >
       <Listbox v-model="fieldValue">
         <div class="relative">
           <ListboxButton :class="fieldStyle">{{ fieldValue }}</ListboxButton>
