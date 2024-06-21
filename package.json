@@ -1,20 +1,20 @@
 {
   "name": "@kiwiproject/vue-dynamic-property-provider",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "private": false,
   "type": "module",
   "files": [
     "dist"
   ],
-  "main": "./dist/vue-dynamic-property-provider.umd.js",
+  "main": "./dist/vue-dynamic-property-provider.cjs.js",
   "module": "./dist/vue-dynamic-property-provider.es.js",
   "exports": {
     ".": {
       "import": "./dist/vue-dynamic-property-provider.es.js",
-      "require": "./dist/vue-dynamic-property-provider.umd.js"
+      "require": "./dist/vue-dynamic-property-provider.cjs.js"
     }
   },
-  "types": "./dist/main.d.ts",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --p ./tsconfig-build.json && vite build",
