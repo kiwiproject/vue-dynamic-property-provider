@@ -9,6 +9,7 @@
         >
           {{ field.label }}
         </th>
+        <th v-if="$slots.action" :class="props.headerStyle">{{ props.actionHeader }}</th>
       </tr>
     </thead>
     <tbody>
@@ -22,6 +23,9 @@
             "*".repeat(row[field.name].length)
           }}</span>
           <span v-else>{{ row[field.name] }}</span>
+        </td>
+        <td v-if="$slots.action" :class="props.cellStyle">
+          <slot name="action" :row="row"/>
         </td>
       </tr>
     </tbody>
@@ -50,5 +54,9 @@ const props = defineProps({
     type: String,
     default: "text-sm p-2 border border-gray-200",
   },
+  actionHeader: {
+    type: String,
+    default: ""
+  }
 });
 </script>

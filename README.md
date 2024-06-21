@@ -71,3 +71,16 @@ app.component('DynamicPropertyTable', DynamicPropertyTable);
   }]);
 </script>
 ```
+
+### Slots
+The `DynamicPropertyTable` has the ability to set a slot to provide an action column. You can use this to add whatever actions you need to each row of the table. For example:
+
+```vue
+<template>
+  <DynamicPropertyTable :fields="fields" :data="data">
+    <template #action="{ row }">
+      <button type="button">Edit</button>
+    </template>
+  </DynamicPropertyTable>
+</template>
+```
