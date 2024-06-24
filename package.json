@@ -24,11 +24,11 @@
   },
   "peerDependencies": {
     "@headlessui/vue": "^1.7.22",
-    "vue": "^3.4.29"
+    "vue": "^3.4.30"
   },
   "devDependencies": {
     "@headlessui/vue": "^1.7.22",
-    "@typescript-eslint/eslint-plugin": "^7.13.1",
+    "@typescript-eslint/eslint-plugin": "^7.14.1",
     "@typescript-eslint/parser": "^7.14.1",
     "@vitejs/plugin-vue": "^5.0.5",
     "@vue/eslint-config-typescript": "^13.0.0",
@@ -45,7 +45,7 @@
     "typescript": "~5.5.2",
     "vite-plugin-dts": "^3.9.1",
     "vite-plugin-eslint": "^1.8.1",
-    "vue": "^3.4.29"
+    "vue": "^3.4.30"
   },
   "eslintConfig": {
     "root": true,
