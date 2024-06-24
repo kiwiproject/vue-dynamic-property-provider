@@ -187,8 +187,8 @@ const props = defineProps({
   },
 });
 
-const modelUpdated = (value: unknown) => {
-  emits("model-updated", value);
+const modelUpdated = () => {
+  emits("model-updated", fieldValue.value);
 };
 
 watch(props.modelValue, () => {
