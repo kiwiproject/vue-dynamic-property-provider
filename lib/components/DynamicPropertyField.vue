@@ -192,11 +192,19 @@ const modelUpdated = () => {
 };
 
 watch(props.modelValue, () => {
-  fieldValue.value = props.modelValue[props.field.name];
+  if (props.field.type === "boolean") {
+    fieldValue.value = !!props.modelValue[props.field.name];
+  } else {
+    fieldValue.value = props.modelValue[props.field.name];
+  }
 });
 
 onMounted(() => {
-  fieldValue.value = props.modelValue[props.field.name];
+  if (props.field.type === "boolean") {
+    fieldValue.value = !!props.modelValue[props.field.name];
+  } else {
+    fieldValue.value = props.modelValue[props.field.name];
+  }
 });
 
 const dataForField = () => {
