@@ -32,6 +32,7 @@
         :id="'dynamic_field_' + field.name"
         v-model="fieldValue"
         :class="fieldStyle"
+        @change="modelUpdated"
       />
     </template>
     <template
@@ -39,7 +40,7 @@
         field.values && field.values.length > 0 && field.type !== 'list'
       "
     >
-      <Listbox v-model="fieldValue">
+      <Listbox v-model="fieldValue" @update:modelValue="modelUpdated">
         <div class="relative">
           <ListboxButton :class="fieldStyle">{{ fieldValue }}</ListboxButton>
           <transition
@@ -77,6 +78,7 @@
         :id="'dynamic_field_' + field.name"
         v-model="fieldValue"
         :class="fieldStyle"
+        @change="modelUpdated"
       />
     </template>
     <template v-else-if="field.type === 'number'">
@@ -85,6 +87,7 @@
         :id="'dynamic_field_' + field.name"
         v-model="fieldValue"
         :class="fieldStyle"
+        @change="modelUpdated"
       />
     </template>
     <template v-else-if="field.type === 'date'">
@@ -94,10 +97,11 @@
         :id="'dynamic_field_' + field.name"
         :value="dataForField()"
         :class="fieldStyle"
+        @change="modelUpdated"
       />
     </template>
     <template v-else-if="field.type === 'list'">
-      <Listbox v-model="fieldValue" multiple>
+      <Listbox v-model="fieldValue" multiple @update:modelValue="modelUpdated">
         <div class="relative">
           <ListboxButton :class="fieldStyle">{{
             fieldValue?.join(", ")
@@ -138,6 +142,7 @@
         v-model="fieldValue"
         :checked="fieldValue"
         class="inline-flex justify-start"
+        @change="modelUpdated"
       />
     </template>
   </div>
@@ -151,6 +156,8 @@ import {
   ListboxOption,
   ListboxOptions,
 } from "@headlessui/vue";
+
+const emits = defineEmits(["model-updated"]);
 
 const fieldValue = ref();
 
@@ -180,15 +187,16 @@ const props = defineProps({
   },
 });
 
+const modelUpdated = (value: unknown) => {
+  emits("model-updated", value);
+};
+
 watch(props.modelValue, () => {
   fieldValue.value = props.modelValue[props.field.name];
 });
 
 onMounted(() => {
   fieldValue.value = props.modelValue[props.field.name];
-  if (props.field.name === "courses") {
-    console.log("FIeld", fieldValue.value.join(", "));
-  }
 });
 
 const dataForField = () => {
