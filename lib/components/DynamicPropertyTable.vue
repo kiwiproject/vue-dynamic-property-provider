@@ -9,7 +9,9 @@
         >
           {{ field.label }}
         </th>
-        <th v-if="$slots.action" :class="props.headerStyle">{{ props.actionHeader }}</th>
+        <th v-if="$slots.action" :class="props.headerStyle">
+          {{ props.actionHeader }}
+        </th>
       </tr>
     </thead>
     <tbody>
@@ -22,10 +24,18 @@
           <span v-if="field.sensitive">{{
             "*".repeat(row[field.name].length)
           }}</span>
+          <span
+            v-else-if="
+              (props.resolveListValues && field.type === 'list') ||
+              (field.values && field.values.length > 0)
+            "
+          >
+            {{ resolveAndJoinValues(field, row[field.name]) }}
+          </span>
           <span v-else>{{ row[field.name] }}</span>
         </td>
         <td v-if="$slots.action" :class="props.cellStyle">
-          <slot name="action" :row="row"/>
+          <slot name="action" :row="row" />
         </td>
       </tr>
     </tbody>
@@ -56,7 +66,29 @@ const props = defineProps({
   },
   actionHeader: {
     type: String,
-    default: ""
-  }
+    default: "",
+  },
+  resolveListValues: {
+    type: Boolean,
+    default: true,
+  },
 });
+
+function resolveAndJoinValues(
+  field: { values: Array<{ value: string | number; display: string }> },
+  fieldValue: string | number | Array<string | number>,
+): string {
+  if (Array.isArray(fieldValue)) {
+    return fieldValue
+      .map(
+        (fv: string | number) =>
+          field.values.filter(
+            (f: { value: string | number }) => f.value === fv,
+          )[0].display,
+      )
+      .join(", ");
+  }
+
+  return field.values.filter((f) => f.value === fieldValue)[0].display;
+}
 </script>
