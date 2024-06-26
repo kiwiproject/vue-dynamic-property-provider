@@ -14,6 +14,7 @@
     <template v-if="!field.editable">
       <input
         disabled
+        :type="field.sensitive ? 'password' : 'text'"
         :id="'dynamic_field_' + field.name"
         v-model="fieldValue"
         :class="fieldStyle"
@@ -42,7 +43,9 @@
     >
       <Listbox v-model="fieldValue" @update:modelValue="modelUpdated">
         <div class="relative">
-          <ListboxButton :class="fieldStyle">{{ fieldValue }}</ListboxButton>
+          <ListboxButton :class="fieldStyle">
+            {{ singleListDisplay(fieldValue) }}
+          </ListboxButton>
           <transition
             enter-active-class="transition ease-out duration-100"
             enter-from-class="transform opacity-0 scale-95"
@@ -56,7 +59,7 @@
                 v-for="opt in props.field.values"
                 v-slot="{ active }"
                 :key="opt"
-                :value="opt"
+                :value="opt.value"
               >
                 <li
                   :class="[
@@ -64,7 +67,7 @@
                     'relative cursor-default select-none py-2 pl-10 pr-4',
                   ]"
                 >
-                  {{ opt }}
+                  {{ opt.display }}
                 </li>
               </ListboxOption>
             </ListboxOptions>
@@ -103,9 +106,9 @@
     <template v-else-if="field.type === 'list'">
       <Listbox v-model="fieldValue" multiple @update:modelValue="modelUpdated">
         <div class="relative">
-          <ListboxButton :class="fieldStyle">{{
-            fieldValue?.join(", ")
-          }}</ListboxButton>
+          <ListboxButton :class="fieldStyle">
+            {{ multipleListDisplay(fieldValue) }}
+          </ListboxButton>
           <transition
             enter-active-class="transition ease-out duration-100"
             enter-from-class="transform opacity-0 scale-95"
@@ -119,7 +122,7 @@
                 v-for="opt in props.field.values"
                 v-slot="{ active }"
                 :key="opt"
-                :value="opt"
+                :value="opt.value"
               >
                 <li
                   :class="[
@@ -127,7 +130,7 @@
                     'relative cursor-default select-none py-2 pl-10 pr-4',
                   ]"
                 >
-                  {{ opt }}
+                  {{ opt.display }}
                 </li>
               </ListboxOption>
             </ListboxOptions>
@@ -209,5 +212,30 @@ onMounted(() => {
 
 const dataForField = () => {
   return props.modelValue[props.field.name];
+};
+
+const singleListDisplay = (fieldValue: string | number): string => {
+  if (fieldValue) {
+    return props.field.values.filter(
+      (v: { value: string | number }) => v.value === fieldValue,
+    )[0].display;
+  } else {
+    return "";
+  }
+};
+
+const multipleListDisplay = (fieldValue: Array<string | number>): string => {
+  if (fieldValue) {
+    return fieldValue
+      .map(
+        (fv: string | number) =>
+          props.field.values.filter(
+            (f: { value: string | number }) => f.value === fv,
+          )[0].display,
+      )
+      .join(", ");
+  } else {
+    return "";
+  }
 };
 </script>

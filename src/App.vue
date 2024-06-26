@@ -42,13 +42,14 @@ const data = ref({
   id: 1,
   studentId: 5,
   createdAt: new Date(),
+  secretAnswer: "Hello",
   password: "foo",
   firstName: "Chris",
   age: 43,
   birthDate: new Date(),
   enabled: true,
   admin: false,
-  courses: ["CS-101", "ENG-104"],
+  courses: [1, 2],
   maxGradeLevel: "HS",
 });
 
@@ -72,6 +73,15 @@ const fields = [
     required: false,
     sensitive: false,
     type: "date",
+  },
+  {
+    name: "secretAnswer",
+    label: "Secret Answer",
+    editable: false,
+    visible: true,
+    required: false,
+    sensitive: true,
+    type: "string",
   },
   {
     name: "password",
@@ -135,7 +145,12 @@ const fields = [
     required: false,
     sensitive: false,
     type: "list",
-    values: ["CS-101", "ENG-104", "PYS-300", "GOV-200"],
+    values: [
+      { value: 1, display: "CS-101" },
+      { value: 2, display: "ENG-104" },
+      { value: 3, display: "PYS-300" },
+      { value: 4, display: "GOV-200" },
+    ],
   },
   {
     name: "maxGradeLevel",
@@ -145,7 +160,14 @@ const fields = [
     required: false,
     sensitive: false,
     type: "string",
-    values: ["ES", "MS", "HS", "Bachelors", "Masters", "PHD"],
+    values: [
+      { value: "ES", display: "Elementary" },
+      { value: "MS", display: "Middle" },
+      { value: "HS", display: "High School" },
+      { value: "Bachelors", display: "Bachelors" },
+      { value: "Masters", display: "Masters" },
+      { value: "PHD", display: "Doctorate" },
+    ],
   },
 ];
 </script>
