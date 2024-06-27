@@ -231,9 +231,9 @@ const singleListDisplay = (fieldValue: string | number): string => {
     return props.field.values.filter(
       (v: { value: string | number }) => v.value === fieldValue,
     )[0].display;
-  } else {
-    return "";
   }
+
+  return "";
 };
 
 const multipleListDisplay = (fieldValue: Array<string | number>): string => {
@@ -246,8 +246,8 @@ const multipleListDisplay = (fieldValue: Array<string | number>): string => {
           )[0].display,
       )
       .join(", ");
-  } else {
-    return "";
   }
+
+  return "";
 };
 </script>
