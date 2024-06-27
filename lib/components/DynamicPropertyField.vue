@@ -48,8 +48,9 @@
     >
       <Listbox v-model="fieldValue" @update:modelValue="modelUpdated">
         <div class="relative">
-          <ListboxButton :class="fieldStyle">
+          <ListboxButton :class="listBoxFieldStyle">
             {{ singleListDisplay(fieldValue) }}
+            <slot name="listbox-icon" />
           </ListboxButton>
           <transition
             enter-active-class="transition ease-out duration-100"
@@ -111,8 +112,9 @@
     <template v-else-if="field.type === 'list'">
       <Listbox v-model="fieldValue" multiple @update:modelValue="modelUpdated">
         <div class="relative">
-          <ListboxButton :class="fieldStyle">
+          <ListboxButton :class="listBoxFieldStyle">
             {{ multipleListDisplay(fieldValue) }}
+            <slot name="listbox-icon" />
           </ListboxButton>
           <transition
             enter-active-class="transition ease-out duration-100"
@@ -183,6 +185,11 @@ const props = defineProps({
     type: String,
     default:
       "basis-3/4 h-[2.5rem] flex w-full rounded-md py-1 px-3 my-1 bg-transparent border border-gray-300 dark:border-gray-600 focus:outline-none focus-visible:ring-indigo-600 focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-offset-0 disabled:text-gray-400",
+  },
+  listBoxFieldStyle: {
+    type: String,
+    default:
+      "relative text-left h-[2.5rem] w-full rounded-md py-1 px-3 my-1 bg-transparent border border-gray-300 dark:border-gray-600 focus:outline-none focus-visible:ring-indigo-600 focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-offset-0",
   },
   listBoxStyle: {
     type: String,
