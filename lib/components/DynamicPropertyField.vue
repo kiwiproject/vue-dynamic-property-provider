@@ -11,7 +11,12 @@
         <span class="pl-1 text-red-500">*</span>
       </template>
     </label>
-    <template v-if="!field.editable">
+    <template
+      v-if="
+        (props.mode === 'create' && !field.editableOnCreate) ||
+        (props.mode === 'update' && !field.editableOnUpdate)
+      "
+    >
       <input
         disabled
         :type="field.sensitive ? 'password' : 'text'"
@@ -187,6 +192,13 @@ const props = defineProps({
   modelValue: {
     type: [Object],
     required: true,
+  },
+  mode: {
+    type: String,
+    required: true,
+    validator(value: string) {
+      return ["create", "update"].includes(value);
+    },
   },
 });
 

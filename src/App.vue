@@ -9,6 +9,7 @@
           v-bind:key="field.name"
           :field="field"
           :modelValue="data"
+          mode="update"
           :class="
             field.type === 'boolean'
               ? 'flex flex-row gap-2'
@@ -59,7 +60,8 @@ const fields = [
   {
     name: "studentId",
     label: "Student ID",
-    editable: false,
+    editableOnCreate: true,
+    editableOnUpdate: false,
     visible: true,
     required: false,
     sensitive: false,
@@ -68,7 +70,8 @@ const fields = [
   {
     name: "createdAt",
     label: "Created At",
-    editable: true,
+    editableOnCreate: true,
+    editableOnUpdate: true,
     visible: false,
     required: false,
     sensitive: false,
@@ -77,7 +80,8 @@ const fields = [
   {
     name: "secretAnswer",
     label: "Secret Answer",
-    editable: false,
+    editableOnCreate: false,
+    editableOnUpdate: false,
     visible: true,
     required: false,
     sensitive: true,
@@ -86,7 +90,8 @@ const fields = [
   {
     name: "password",
     label: "Password",
-    editable: true,
+    editableOnCreate: true,
+    editableOnUpdate: true,
     visible: true,
     required: true,
     sensitive: true,
@@ -95,7 +100,8 @@ const fields = [
   {
     name: "firstName",
     label: "First Name",
-    editable: true,
+    editableOnCreate: true,
+    editableOnUpdate: true,
     visible: true,
     required: false,
     sensitive: false,
@@ -104,7 +110,8 @@ const fields = [
   {
     name: "age",
     label: "Age",
-    editable: true,
+    editableOnCreate: true,
+    editableOnUpdate: true,
     visible: true,
     required: false,
     sensitive: false,
@@ -113,7 +120,8 @@ const fields = [
   {
     name: "birthDate",
     label: "Birthday",
-    editable: true,
+    editableOnCreate: true,
+    editableOnUpdate: true,
     visible: true,
     required: false,
     sensitive: false,
@@ -122,7 +130,8 @@ const fields = [
   {
     name: "enabled",
     label: "Is Enabled?",
-    editable: true,
+    editableOnCreate: true,
+    editableOnUpdate: true,
     visible: true,
     required: false,
     sensitive: false,
@@ -131,7 +140,8 @@ const fields = [
   {
     name: "admin",
     label: "Is Admin?",
-    editable: true,
+    editableOnCreate: true,
+    editableOnUpdate: true,
     visible: true,
     required: false,
     sensitive: false,
@@ -140,7 +150,8 @@ const fields = [
   {
     name: "courses",
     label: "Courses",
-    editable: true,
+    editableOnCreate: true,
+    editableOnUpdate: true,
     visible: true,
     required: false,
     sensitive: false,
@@ -155,7 +166,8 @@ const fields = [
   {
     name: "maxGradeLevel",
     label: "Max Grade Level",
-    editable: true,
+    editableOnCreate: true,
+    editableOnUpdate: true,
     visible: true,
     required: false,
     sensitive: false,
