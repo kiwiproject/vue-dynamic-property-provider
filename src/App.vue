@@ -15,7 +15,13 @@
               ? 'flex flex-row gap-2'
               : 'flex flex-col gap-2'
           "
-        />
+        >
+          <template #listbox-icon>
+            <span class="absolute inset-y-0 right-0 flex items-center pr-2">
+              <ChevronDownIconSolid class="h-4 w-4" aria-hidden="true" />
+            </span>
+          </template>
+        </DynamicPropertyField>
       </div>
     </div>
     <div class="w-full">
@@ -37,6 +43,7 @@
 
 <script lang="ts" setup>
 import { ref } from "vue";
+import { ChevronDownIcon as ChevronDownIconSolid } from "@heroicons/vue/24/solid";
 import { DynamicPropertyTable, DynamicPropertyField } from "../lib";
 
 const data = ref({
