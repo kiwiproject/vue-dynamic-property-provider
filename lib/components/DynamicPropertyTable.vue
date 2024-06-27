@@ -78,17 +78,21 @@ function resolveAndJoinValues(
   field: { values: Array<{ value: string | number; display: string }> },
   fieldValue: string | number | Array<string | number>,
 ): string {
-  if (Array.isArray(fieldValue)) {
-    return fieldValue
-      .map(
-        (fv: string | number) =>
-          field.values.filter(
-            (f: { value: string | number }) => f.value === fv,
-          )[0].display,
-      )
-      .join(", ");
+  if (fieldValue) {
+    if (Array.isArray(fieldValue)) {
+      return fieldValue
+        .map(
+          (fv: string | number) =>
+            field.values.filter(
+              (f: { value: string | number }) => f.value === fv,
+            )[0].display,
+        )
+        .join(", ");
+    }
+
+    return field.values.filter((f) => f.value === fieldValue)[0].display;
   }
 
-  return field.values.filter((f) => f.value === fieldValue)[0].display;
+  return "";
 }
 </script>
