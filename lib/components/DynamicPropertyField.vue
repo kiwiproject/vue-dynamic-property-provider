@@ -38,7 +38,7 @@
         :id="'dynamic_field_' + field.name"
         v-model="fieldValue"
         :class="fieldStyle"
-        @change="modelUpdated"
+        @keyup="modelUpdated"
       />
     </template>
     <template
@@ -87,7 +87,7 @@
         :id="'dynamic_field_' + field.name"
         v-model="fieldValue"
         :class="fieldStyle"
-        @change="modelUpdated"
+        @keyup="modelUpdated"
       />
     </template>
     <template v-else-if="field.type === 'number'">
@@ -96,7 +96,7 @@
         :id="'dynamic_field_' + field.name"
         v-model="fieldValue"
         :class="fieldStyle"
-        @change="modelUpdated"
+        @keyup="modelUpdated"
       />
     </template>
     <template v-else-if="field.type === 'date'">
@@ -106,7 +106,7 @@
         :id="'dynamic_field_' + field.name"
         :value="dataForField()"
         :class="fieldStyle"
-        @change="modelUpdated"
+        @keyup="modelUpdated"
       />
     </template>
     <template v-else-if="field.type === 'list'">
