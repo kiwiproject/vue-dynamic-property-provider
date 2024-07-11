@@ -87,6 +87,7 @@
         :id="'dynamic_field_' + field.name"
         v-model="fieldValue"
         :class="fieldStyle"
+        :autocomplete="props.autocomplete"
         @keyup="modelUpdated"
       />
     </template>
@@ -96,6 +97,7 @@
         :id="'dynamic_field_' + field.name"
         v-model="fieldValue"
         :class="fieldStyle"
+        :autocomplete="props.autocomplete"
         @keyup="modelUpdated"
       />
     </template>
@@ -106,6 +108,7 @@
         :id="'dynamic_field_' + field.name"
         :value="dataForField()"
         :class="fieldStyle"
+        :autocomplete="props.autocomplete"
         @keyup="modelUpdated"
       />
     </template>
@@ -206,6 +209,10 @@ const props = defineProps({
     validator(value: string) {
       return ["create", "update"].includes(value);
     },
+  },
+  autocomplete: {
+    type: String,
+    default: "off",
   },
 });
 
