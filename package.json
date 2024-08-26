@@ -29,7 +29,7 @@
   "devDependencies": {
     "@headlessui/vue": "^1.7.22",
     "@heroicons/vue": "^2.1.5",
-    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/eslint-plugin": "^8.3.0",
     "@typescript-eslint/parser": "^7.17.0",
     "@vitejs/plugin-vue": "^5.1.2",
     "@vue/eslint-config-typescript": "^13.0.0",
