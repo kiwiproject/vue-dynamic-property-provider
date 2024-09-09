@@ -24,7 +24,7 @@
   },
   "peerDependencies": {
     "@headlessui/vue": "^1.7.23",
-    "vue": "^3.4.38"
+    "vue": "^3.5.3"
   },
   "devDependencies": {
     "@headlessui/vue": "^1.7.23",
@@ -46,7 +46,7 @@
     "typescript": "~5.4.5",
     "vite-plugin-dts": "^4.1.0",
     "vite-plugin-eslint": "^1.8.1",
-    "vue": "^3.4.38"
+    "vue": "^3.5.3"
   },
   "eslintConfig": {
     "root": true,
