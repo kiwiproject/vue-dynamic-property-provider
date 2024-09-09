@@ -23,11 +23,11 @@
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json|vue)\""
   },
   "peerDependencies": {
-    "@headlessui/vue": "^1.7.22",
+    "@headlessui/vue": "^1.7.23",
     "vue": "^3.4.38"
   },
   "devDependencies": {
-    "@headlessui/vue": "^1.7.22",
+    "@headlessui/vue": "^1.7.23",
     "@heroicons/vue": "^2.1.5",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
     "@typescript-eslint/parser": "^7.17.0",
