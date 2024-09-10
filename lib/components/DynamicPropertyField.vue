@@ -63,17 +63,18 @@
             <ListboxOptions :class="listBoxStyle">
               <ListboxOption
                 v-for="opt in props.field.values"
-                v-slot="{ active }"
+                v-slot="{ active, selected }"
                 :key="opt"
                 :value="opt.value"
               >
                 <li
                   :class="[
                     active ? 'bg-gray-100  dark:bg-slate-700' : 'bg-none',
-                    'relative cursor-default select-none py-2 pl-10 pr-4',
+                    'relative cursor-pointer select-none py-2 pl-10 pr-4 flex flex-row gap-2',
                   ]"
                 >
-                  {{ opt.display }}
+                  <span v-show="selected" class="text-green-500">&#10004;</span>
+                  <div>{{ opt.display }}</div>
                 </li>
               </ListboxOption>
             </ListboxOptions>
@@ -130,17 +131,18 @@
             <ListboxOptions :class="listBoxStyle">
               <ListboxOption
                 v-for="opt in props.field.values"
-                v-slot="{ active }"
+                v-slot="{ active, selected }"
                 :key="opt"
                 :value="opt.value"
               >
                 <li
                   :class="[
                     active ? 'bg-gray-100  dark:bg-slate-700' : 'bg-none',
-                    'relative cursor-default select-none py-2 pl-10 pr-4',
+                    'relative cursor-pointer select-none py-2 pl-10 pr-4 flex flex-row gap-2',
                   ]"
                 >
-                  {{ opt.display }}
+                  <span v-show="selected" class="text-green-500">&#10004;</span>
+                  <div>{{ opt.display }}</div>
                 </li>
               </ListboxOption>
             </ListboxOptions>
