@@ -6,9 +6,9 @@
       <div class="flex flex-col gap-4">
         <DynamicPropertyField
           v-for="field of fields"
-          v-bind:key="field.name"
+          :key="field.name"
           :field="field"
-          :modelValue="data"
+          :model-value="data"
           mode="update"
           :class="
             field.type === 'boolean'
