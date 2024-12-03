@@ -29,7 +29,7 @@
   "devDependencies": {
     "@headlessui/vue": "^1.7.23",
     "@heroicons/vue": "^2.2.0",
-    "@vitejs/plugin-vue": "^5.2.0",
+    "@vitejs/plugin-vue": "^5.2.1",
     "@vue/tsconfig": "0.6.0",
     "autoprefixer": "^10.4.20",
     "eslint": "9.16.0",
