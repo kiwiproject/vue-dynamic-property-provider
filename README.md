@@ -1,5 +1,5 @@
 ### Vue Dynamic Property Provider
-[![Build](https://github.com/kiwiproject/vue-dynamic-property-provider/workflows/build/badge.svg)](https://github.com/kiwiproject/vue-dynamic-property-provider/actions?query=workflow%3Abuild)
+[![Build](https://github.com/kiwiproject/vue-dynamic-property-provider/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/kiwiproject/vue-dynamic-property-provider/actions/workflows/build.yml?query=branch%3Amain)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=kiwiproject_vue-dynamic-property-provider&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=kiwiproject_vue-dynamic-property-provider)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=kiwiproject_vue-dynamic-property-provider&metric=coverage)](https://sonarcloud.io/summary/new_code?id=kiwiproject_vue-dynamic-property-provider)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
