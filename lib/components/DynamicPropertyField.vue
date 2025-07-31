@@ -140,7 +140,7 @@ const props = defineProps({
   fieldStyle: {
     type: String,
     default:
-      "basis-3/4 h-[2.5rem] flex w-full rounded-md py-1 px-3 my-1 bg-transparent border border-gray-300 dark:border-gray-600 focus:outline-none focus-visible:ring-indigo-600 focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-offset-0 disabled:text-gray-400",
+      "basis-3/4 flex w-full rounded-md py-1 px-3 my-1 bg-transparent border border-gray-300 dark:border-gray-600 focus:outline-none focus-visible:ring-indigo-600 focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-offset-0 disabled:text-gray-400",
   },
   multiSelectSize: {
     type: Number,
