@@ -8,7 +8,7 @@
       {{ field.label }}:
       <template v-if="field.required">
         <span class="sr-only">Required</span>
-        <span class="pl-1 text-red-500">*</span>
+        <span :class="labelRequiredStyle">*</span>
       </template>
     </label>
     <template
@@ -46,41 +46,17 @@
         field.values && field.values.length > 0 && field.type !== 'list'
       "
     >
-      <Listbox v-model="fieldValue" @update:modelValue="modelUpdated">
-        <div class="relative">
-          <ListboxButton :class="listBoxFieldStyle">
-            {{ singleListDisplay(fieldValue) }}
-            <slot name="listbox-icon" />
-          </ListboxButton>
-          <transition
-            enter-active-class="transition ease-out duration-100"
-            enter-from-class="transform opacity-0 scale-95"
-            enter-to-class="transform opacity-100 scale-100"
-            leave-active-class="transition ease-in duration-75"
-            leave-from-class="transform opacity-100 scale-100"
-            leave-to-class="transform opacity-0 scale-95"
+      <slot name="single-select-field">
+        <select v-model="fieldValue" :class="fieldStyle" @change="modelUpdated">
+          <option
+            v-for="opt in props.field.values"
+            :key="opt.value"
+            :value="opt.value"
           >
-            <ListboxOptions :class="listBoxStyle">
-              <ListboxOption
-                v-for="opt in props.field.values"
-                v-slot="{ active, selected }"
-                :key="opt"
-                :value="opt.value"
-              >
-                <li
-                  :class="[
-                    active ? 'bg-gray-100  dark:bg-slate-700' : 'bg-none',
-                    'relative cursor-pointer select-none py-2 pl-10 pr-4 flex flex-row gap-2',
-                  ]"
-                >
-                  <span v-show="selected" class="text-green-500">&#10004;</span>
-                  <div>{{ opt.display }}</div>
-                </li>
-              </ListboxOption>
-            </ListboxOptions>
-          </transition>
-        </div>
-      </Listbox>
+            {{ opt.display }}
+          </option>
+        </select>
+      </slot>
     </template>
     <template v-else-if="field.type === 'string'">
       <input
@@ -114,41 +90,17 @@
       />
     </template>
     <template v-else-if="field.type === 'list'">
-      <Listbox v-model="fieldValue" multiple @update:modelValue="modelUpdated">
-        <div class="relative">
-          <ListboxButton :class="listBoxFieldStyle">
-            {{ multipleListDisplay(fieldValue) }}
-            <slot name="listbox-icon" />
-          </ListboxButton>
-          <transition
-            enter-active-class="transition ease-out duration-100"
-            enter-from-class="transform opacity-0 scale-95"
-            enter-to-class="transform opacity-100 scale-100"
-            leave-active-class="transition ease-in duration-75"
-            leave-from-class="transform opacity-100 scale-100"
-            leave-to-class="transform opacity-0 scale-95"
+      <slot name="multiple-select-field">
+        <select v-model="fieldValue" :class="fieldStyle" :size="multiSelectSize" multiple @change="modelUpdated">
+          <option
+            v-for="opt in props.field.values"
+            :key="opt.value"
+            :value="opt.value"
           >
-            <ListboxOptions :class="listBoxStyle">
-              <ListboxOption
-                v-for="opt in props.field.values"
-                v-slot="{ active, selected }"
-                :key="opt"
-                :value="opt.value"
-              >
-                <li
-                  :class="[
-                    active ? 'bg-gray-100  dark:bg-slate-700' : 'bg-none',
-                    'relative cursor-pointer select-none py-2 pl-10 pr-4 flex flex-row gap-2',
-                  ]"
-                >
-                  <span v-show="selected" class="text-green-500">&#10004;</span>
-                  <div>{{ opt.display }}</div>
-                </li>
-              </ListboxOption>
-            </ListboxOptions>
-          </transition>
-        </div>
-      </Listbox>
+            {{ opt.display }}
+          </option>
+        </select>
+      </slot>
     </template>
     <template v-else-if="field.type === 'boolean'">
       <input
@@ -165,12 +117,6 @@
 
 <script lang="ts" setup>
 import { onMounted, ref, watch } from "vue";
-import {
-  Listbox,
-  ListboxButton,
-  ListboxOption,
-  ListboxOptions,
-} from "@headlessui/vue";
 
 const emits = defineEmits(["model-updated"]);
 
@@ -186,20 +132,19 @@ const props = defineProps({
     default:
       "basis-1/4 inline-flex text-xs text-left uppercase font-semibold text-gray-700 dark:text-gray-300",
   },
+  labelRequiredStyle: {
+    type: String,
+    default:
+      "pl-1 text-red-500",
+  },
   fieldStyle: {
     type: String,
     default:
-      "basis-3/4 h-[2.5rem] flex w-full rounded-md py-1 px-3 my-1 bg-transparent border border-gray-300 dark:border-gray-600 focus:outline-none focus-visible:ring-indigo-600 focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-offset-0 disabled:text-gray-400",
+      "basis-3/4 flex w-full rounded-md py-1 px-3 my-1 bg-transparent border border-gray-300 dark:border-gray-600 focus:outline-none focus-visible:ring-indigo-600 focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-offset-0 disabled:text-gray-400",
   },
-  listBoxFieldStyle: {
-    type: String,
-    default:
-      "relative text-left h-[2.5rem] w-full rounded-md py-1 px-3 my-1 bg-transparent border border-gray-300 dark:border-gray-600 focus:outline-none focus-visible:ring-indigo-600 focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-offset-0",
-  },
-  listBoxStyle: {
-    type: String,
-    default:
-      "absolute w-full py-1 mt-1 overflow-auto text-gray-900 bg-white rounded-md shadow-lg max-h-52 ring-1 ring-black ring-opacity-5 dark:text-gray-300 dark:bg-slate-800 dark:ring-1 dark:ring-slate-50 dark:ring-opacity-10 focus:outline-none z-[5]",
+  multiSelectSize: {
+    type: Number,
+    default: 4,
   },
   modelValue: {
     type: [Object],
@@ -242,28 +187,4 @@ const dataForField = () => {
   return props.modelValue[props.field.name];
 };
 
-const singleListDisplay = (fieldValue: string | number): string => {
-  if (fieldValue) {
-    return props.field.values.filter(
-      (v: { value: string | number }) => v.value === fieldValue,
-    )[0].display;
-  }
-
-  return "";
-};
-
-const multipleListDisplay = (fieldValue: Array<string | number>): string => {
-  if (fieldValue) {
-    return fieldValue
-      .map(
-        (fv: string | number) =>
-          props.field.values.filter(
-            (f: { value: string | number }) => f.value === fv,
-          )[0].display,
-      )
-      .join(", ");
-  }
-
-  return "";
-};
 </script>
