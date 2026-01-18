@@ -1,8 +1,16 @@
 {
   "name": "@kiwiproject/vue-dynamic-property-provider",
-  "version": "0.13.0",
+  "version": "0.0.0-semantically-released",
   "private": false,
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kiwiproject/vue-dynamic-property-provider.git"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
   "files": [
     "dist"
   ],
@@ -26,6 +34,7 @@
     "vue": "^3.5.26"
   },
   "devDependencies": {
+    "semantic-release": "^24.2.4",
     "@tailwindcss/vite": "4.1.18",
     "@vitejs/plugin-vue": "^6.0.3",
     "@vue/tsconfig": "0.8.1",
