@@ -34,7 +34,7 @@
     "vue": "^3.5.26"
   },
   "devDependencies": {
-    "semantic-release": "^24.2.4",
+    "semantic-release": "^25.0.2",
     "@tailwindcss/vite": "4.1.18",
     "@vitejs/plugin-vue": "^6.0.3",
     "@vue/tsconfig": "0.8.1",
