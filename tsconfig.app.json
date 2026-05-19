@@ -7,10 +7,6 @@
       "verbatimModuleSyntax": false,
       "composite": true,
       "noEmit": true,
-      "baseUrl": ".",
-      "paths": {
-        "@/*": ["./src/*"]
-      },
       "types": ["node"]
     }
   }
