@@ -31,7 +31,7 @@
     "format": "prettier --write src/"
   },
   "peerDependencies": {
-    "vue": "3.5.43"
+    "vue": "3.5.44"
   },
   "overrides": {
     "@actions/http-client": {
@@ -41,18 +41,18 @@
   "devDependencies": {
     "semantic-release": "25.0.9",
     "@tailwindcss/vite": "4.3.3",
-    "@vitejs/plugin-vue": "6.0.9",
+    "@vitejs/plugin-vue": "6.0.10",
     "@vue/tsconfig": "0.9.1",
     "eslint": "10.11.0",
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-vue": "10.11.1",
-    "prettier": "3.9.9",
+    "prettier": "3.9.10",
     "tailwindcss": "4.3.3",
-    "ts-jest": "29.4.14",
+    "ts-jest": "29.4.15",
     "typescript": "6.0.3",
-    "typescript-eslint": "8.70.1",
-    "vue": "3.5.43",
-    "vue-tsc": "3.3.12"
+    "typescript-eslint": "8.71.0",
+    "vue": "3.5.44",
+    "vue-tsc": "3.3.13"
   },
   "browserslist": [
     "> 1%",
