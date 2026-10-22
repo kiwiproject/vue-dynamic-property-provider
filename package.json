@@ -39,7 +39,7 @@
     }
   },
   "devDependencies": {
-    "semantic-release": "25.0.9",
+    "@eslint/js": "10.0.1",
     "@tailwindcss/vite": "4.3.3",
     "@vitejs/plugin-vue": "6.0.10",
     "@vue/tsconfig": "0.9.1",
@@ -47,6 +47,7 @@
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-vue": "10.11.1",
     "prettier": "3.9.10",
+    "semantic-release": "25.0.9",
     "tailwindcss": "4.3.3",
     "ts-jest": "29.4.15",
     "typescript": "6.0.3",

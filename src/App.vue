@@ -28,7 +28,7 @@
           action-header="Actions"
           class="table-auto text-left w-full border border-gray-200"
         >
-          <template #action="{ row }">
+          <template #action>
             <button type="button">Edit</button>
           </template>
         </DynamicPropertyTable>
